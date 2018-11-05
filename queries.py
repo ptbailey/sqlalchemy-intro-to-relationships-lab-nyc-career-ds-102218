@@ -6,9 +6,8 @@ engine = create_engine('sqlite:///actors.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-
 def return_gwyneth_paltrows_roles():
-    pass
+    return session.query(Role).join(Actor).filter(Actor.name == 'Gwyneth Paltrow').all()
 
 def return_tom_hanks_2nd_role():
-    pass
+    return (session.query(Role).join(Actor).filter(Actor.name == 'Tom Hanks').all())[1]
